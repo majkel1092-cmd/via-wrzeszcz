@@ -28,6 +28,10 @@ header .wrap{display:flex;justify-content:space-between;align-items:center;heigh
 nav{display:flex;gap:1.6rem;align-items:center;font-size:.95rem}
 nav a{text-decoration:none;opacity:.85}nav a:hover{opacity:1}
 nav .call{background:var(--gold);color:var(--green);opacity:1;font-weight:700;padding:.5rem 1.1rem;border-radius:99px}
+.langsw{all:unset;display:flex;align-items:center;gap:.3rem;font:700 .8rem var(--sans);letter-spacing:.02em;cursor:pointer;color:#f7f3ea;opacity:.85;border:1px solid rgba(247,243,234,.3);border-radius:99px;padding:.35rem .5rem}
+.langsw:hover{opacity:1}
+.langsw span{padding:.15rem .5rem;border-radius:99px}
+.langsw span.on{background:var(--gold);color:var(--green)}
 @media(max-width:600px){nav .hide{display:none}}
 
 .hero{position:relative;background:var(--green);color:#f7f3ea;min-height:calc(100svh - 4rem);display:flex;flex-direction:column;overflow:hidden}
@@ -191,33 +195,35 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
 </head>
 <body>
 <header><div class="wrap"><a class="logo" href="#top">Via.</a>
-<nav><a class="hide" href="#menu">Menu</a><a href="#rezerwacja">Rezerwacja</a><a class="call" href="tel:+48881787686">Zadzwoń</a></nav></div></header>
+<nav><a class="hide" href="#menu" data-i18n="navMenu">Menu</a><a href="#rezerwacja" data-i18n="navResv">Rezerwacja</a><a class="call" href="tel:+48881787686" data-i18n="navCall">Zadzwoń</a>
+<button type="button" class="langsw" id="langBtn" aria-label="Zmień język / Change language"><span id="lPL" class="on">PL</span><span id="lEN">EN</span></button>
+</nav></div></header>
 <main id="top">
 <div class="hero"><div class="wrap">
-  <p class="it">Mangia, bene, vivi meglio!</p>
+  <p class="it" data-i18n="tagline">Mangia, bene, vivi meglio!</p>
   <h1><span>Via.</span></h1>
   <div class="hrow">
-    <div><p class="sub">Włoska kuchnia na Wrzeszczu, od kawy do wieczornego spritza.</p><p class="d">Pizza z pieca, romana na kawałki, świeży makaron i kanapki. Italian Bar czynny od 17:00.</p></div>
+    <div><p class="sub" data-i18n="heroSub">Włoska kuchnia na Wrzeszczu, od kawy do wieczornego spritza.</p><p class="d" data-i18n="heroDesc">Pizza z pieca, romana na kawałki, świeży makaron i kanapki. Italian Bar czynny od 17:00.</p></div>
     <div><div class="status" id="status" role="status"><span class="dot"></span><span id="stxt"></span></div>
-    <div class="btns"><a class="btn s" href="#rezerwacja">Zarezerwuj stolik</a><a class="btn" href="#menu">Zobacz menu</a></div></div>
+    <div class="btns"><a class="btn s" href="#rezerwacja" data-i18n="btnReserve">Zarezerwuj stolik</a><a class="btn" href="#menu" data-i18n="btnMenu">Zobacz menu</a></div></div>
   </div>
 </div><div class="tri" aria-hidden="true"><i></i><i></i><i></i></div></div>
 <div class="curtain" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <section id="menu"><div class="wrap">
-  <h2>Menu</h2>
-  <p class="lede">Wybierz kategorię. Ceny w złotych, pizza 32 cm na cienkim, neapolitańskim cieście.</p>
+  <h2 data-i18n="menuH2">Menu</h2>
+  <p class="lede" data-i18n="menuLede">Wybierz kategorię. Ceny w złotych, pizza 32 cm na cienkim, neapolitańskim cieście.</p>
   <div id="acc"></div>
 </div></section>
 
 <section class="resv" id="rezerwacja"><div class="wrap">
-  <h2>Zarezerwuj <em>stolik</em></h2>
-  <p class="lede">Podgląd formularza — wysyłka rezerwacji zostanie podłączona w kolejnym kroku.</p>
+  <h2 data-i18n-html="resvH2">Zarezerwuj <em>stolik</em></h2>
+  <p class="lede" data-i18n="resvLede">Podgląd formularza — wysyłka rezerwacji zostanie podłączona w kolejnym kroku.</p>
   <form class="rf card" onsubmit="return false">
     <div class="dfield">
-      <label id="dlbl" for="dbtn">Data</label>
+      <label id="dlbl" for="dbtn" data-i18n="lblDate">Data</label>
       <button type="button" class="dbtn" id="dbtn" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="dlbl">
-        <span id="dtxt" class="ph">Wybierz datę</span>
+        <span id="dtxt" class="ph" data-i18n="phDate">Wybierz datę</span>
         <svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm12 8v10H5V10h14ZM5 8V6h14v2H5Z"/></svg>
       </button>
       <div class="cal" id="cal" role="dialog" aria-label="Wybór daty" hidden>
@@ -226,14 +232,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
           <span id="mLbl"></span>
           <button type="button" id="nextM" aria-label="Następny miesiąc"><svg viewBox="0 0 24 24"><path d="m9 4-1.4 1.4L15.2 12l-7.6 6.6L9 20l9-8Z"/></svg></button>
         </div>
-        <div class="cal-dow"><span>pn</span><span>wt</span><span>śr</span><span>cz</span><span>pt</span><span>sb</span><span>nd</span></div>
+        <div class="cal-dow" id="calDow"></div>
         <div class="cal-grid" id="cGrid"></div>
       </div>
     </div>
     <div class="dfield">
-      <label id="tlbl" for="tbtn">Godzina</label>
+      <label id="tlbl" for="tbtn" data-i18n="lblTime">Godzina</label>
       <button type="button" class="dbtn" id="tbtn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="tlbl">
-        <span id="ttxt" class="ph">Wybierz</span>
+        <span id="ttxt" class="ph" data-i18n="phChoose">Wybierz</span>
         <svg class="chev" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
       </button>
       <ul class="opts" id="tOpts" role="listbox" hidden>
@@ -245,33 +251,38 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
       </ul>
     </div>
     <div class="dfield">
-      <label id="plbl" for="pbtn">Liczba osób</label>
+      <label id="plbl" for="pbtn" data-i18n="lblParty">Liczba osób</label>
       <button type="button" class="dbtn" id="pbtn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="plbl">
-        <span id="ptxt" class="ph">Wybierz</span>
+        <span id="ptxt" class="ph" data-i18n="phChoose">Wybierz</span>
         <svg class="chev" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
       </button>
-      <ul class="opts" id="pOpts" role="listbox" hidden>
-        <li role="option">1 osoba</li><li role="option">2 osoby</li><li role="option">3 osoby</li><li role="option">4 osoby</li>
-        <li role="option">5 osób</li><li role="option">6 osób</li><li role="option">7 osób</li><li role="option">8 osób</li>
-        <li role="option">9 osób</li><li role="option">10 osób</li>
-      </ul>
+      <ul class="opts" id="pOpts" role="listbox" hidden></ul>
     </div>
-    <label>Numer telefonu<input type="tel" placeholder="np. 600 100 200" required pattern="[0-9+ ()-]{9,20}"></label>
-    <label class="full">Imię i nazwisko<input type="text" placeholder="np. Anna Kowalska" required></label>
-    <label class="full">Uwagi (opcjonalnie)<textarea placeholder="np. stolik przy oknie, alergia na orzechy…"></textarea></label>
-    <button class="submit" type="submit">Zarezerwuj</button>
-    <p class="full note">Formularz jest jeszcze podglądem — kliknięcie nie wysyła rezerwacji.</p>
+    <label>
+      <span data-i18n="lblPhone">Numer telefonu</span>
+      <input type="tel" data-i18n-ph="phPhone" placeholder="np. 600 100 200" required pattern="[0-9+ ()-]{9,20}">
+    </label>
+    <label class="full">
+      <span data-i18n="lblName">Imię i nazwisko</span>
+      <input type="text" data-i18n-ph="phName" placeholder="np. Anna Kowalska" required>
+    </label>
+    <label class="full">
+      <span data-i18n="lblNotes">Uwagi (opcjonalnie)</span>
+      <textarea data-i18n-ph="phNotes" placeholder="np. stolik przy oknie, alergia na orzechy…"></textarea>
+    </label>
+    <button class="submit" type="submit" data-i18n="btnSubmit">Zarezerwuj</button>
+    <p class="full note" data-i18n="formNote">Formularz jest jeszcze podglądem — kliknięcie nie wysyła rezerwacji.</p>
   </form>
 </div></section>
 
 <section id="kontakt"><div class="wrap cg">
   <div>
-    <h2>Dojazd</h2>
+    <h2 data-i18n="kontaktH2">Dojazd</h2>
     <address>Romana Dmowskiego 2<br>80-243 Gdańsk</address>
     <a class="tel" href="tel:+48881787686">881 787 686</a>
     <table id="hours"></table>
-    <p class="lede" style="margin:0 0 1.2rem">Na miejscu, na wynos i z dostawą. Ocena w Google 4,8 (175 opinii).</p>
-    <p class="soc-h">Śledź nas</p>
+    <p class="lede" style="margin:0 0 1.2rem" data-i18n="kontaktLede">Na miejscu, na wynos i z dostawą. Ocena w Google 4,8 (175 opinii).</p>
+    <p class="soc-h" data-i18n="socH">Śledź nas</p>
     <div class="soc">
       <a href="https://www.instagram.com/viawrzeszcz/" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.07.05 1.79.22 2.43.46.66.26 1.22.6 1.77 1.15a4.9 4.9 0 0 1 1.15 1.77c.24.64.41 1.36.46 2.43.05 1.06.06 1.42.06 4.13s-.01 3.06-.06 4.12c-.05 1.07-.22 1.79-.46 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.24-1.36.41-2.43.46-1.06.05-1.42.06-4.12.06s-3.06-.01-4.13-.06c-1.07-.05-1.79-.22-2.43-.46a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.24-.64-.4-1.36-.46-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.07.22-1.8.46-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.44 2.52c.64-.24 1.36-.4 2.43-.46C8.94 2.01 9.3 2 12 2Zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.2-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"/></svg>Instagram</a>
       <a href="https://www.facebook.com/p/VIA-Wrzeszcz-61588919458255/" rel="noopener"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.5-3.89 3.79-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg>Facebook</a>
@@ -280,43 +291,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   </div>
   <div class="map">
     <iframe title="Mapa Google: VIA. Wrzeszcz, Romana Dmowskiego 2, Gdańsk" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Romana%20Dmowskiego%202%2C%2080-243%20Gda%C5%84sk&z=17&output=embed"></iframe>
-    <a href="https://www.google.com/maps/search/?api=1&query=VIA.+Wrzeszcz+Romana+Dmowskiego+2+Gda%C5%84sk" rel="noopener">Otwórz w Mapach Google i wyznacz trasę</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=VIA.+Wrzeszcz+Romana+Dmowskiego+2+Gda%C5%84sk" rel="noopener" data-i18n="mapLink">Otwórz w Mapach Google i wyznacz trasę</a>
   </div>
 </div></section>
 </main>
 <footer>
   <div class="wrap"><span>VIA. Wrzeszcz, Romana Dmowskiego 2, Gdańsk</span><span>@via.wrzeszcz</span></div>
   <div class="wrap" style="margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(247,243,234,.15);font-size:.8rem;opacity:.6;justify-content:space-between">
-    <a href="#" id="privLink" style="text-decoration:underline">Polityka prywatności</a>
-    <span>Strona: <a href="https://pageify.pl" target="_blank" rel="noopener" style="text-decoration:underline">Pageify.pl</a></span>
+    <a href="#" id="privLink" style="text-decoration:underline" data-i18n="privLink">Polityka prywatności</a>
+    <span data-i18n="footerSite">Strona: <a href="https://pageify.pl" target="_blank" rel="noopener" style="text-decoration:underline">Pageify.pl</a></span>
   </div>
 </footer>
 
 <div class="ovl" id="privOvl" hidden>
   <div class="modal" role="dialog" aria-label="Polityka prywatności" aria-modal="true">
     <button class="mclose" id="privClose" aria-label="Zamknij"><svg viewBox="0 0 24 24"><path d="m6.4 5 12.6 12.6-1.4 1.4L5 6.4 6.4 5Zm12.6 1.4L6.4 19 5 17.6 17.6 5 19 6.4Z"/></svg></button>
-    <h3>Polityka prywatności</h3>
-    <p>Ostatnia aktualizacja: wrzesień 2026. Niniejszy dokument opisuje, jak VIA. Wrzeszcz przetwarza dane osób korzystających z tej strony i formularza rezerwacji.</p>
-    <h4>Administrator danych</h4>
-    <p>Administratorem danych jest VIA. Wrzeszcz, Romana Dmowskiego 2, 80-243 Gdańsk, tel. 881 787 686.</p>
-    <h4>Jakie dane zbieramy i po co</h4>
-    <ul>
-      <li>Dane z formularza rezerwacji — imię i nazwisko, numer telefonu, data i godzina, liczba osób, opcjonalne uwagi — w celu przyjęcia i potwierdzenia rezerwacji stolika.</li>
-      <li>Dane techniczne (np. adres IP, typ przeglądarki) mogą być zbierane automatycznie przez usługi, z których korzystamy, takie jak mapa Google poniżej, w celu poprawnego działania strony.</li>
-    </ul>
-    <h4>Podstawa prawna i okres przechowywania</h4>
-    <p>Dane z formularza przetwarzamy na podstawie art. 6 ust. 1 lit. b RODO (podjęcie działań przed zawarciem umowy — obsługa rezerwacji) oraz lit. f (nasz prawnie uzasadniony interes, np. kontakt w sprawie rezerwacji). Dane przechowujemy nie dłużej, niż jest to potrzebne do obsługi rezerwacji i rozliczeń, a następnie usuwamy lub anonimizujemy.</p>
-    <h4>Komu udostępniamy dane</h4>
-    <p>Dane mogą być powierzane dostawcom usług, z których korzystamy do prowadzenia strony i obsługi rezerwacji (np. hosting, baza danych), wyłącznie w zakresie niezbędnym do świadczenia tych usług.</p>
-    <h4>Pliki cookies i mapa Google</h4>
-    <p>Strona osadza mapę Google, która może zapisywać własne pliki cookies zgodnie z polityką prywatności Google. Nie korzystamy z dodatkowych cookies śledzących.</p>
-    <h4>Twoje prawa</h4>
-    <p>Masz prawo do dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia oraz sprzeciwu, a także prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych. W tych sprawach napisz do nas na numer podany powyżej.</p>
-    <p style="margin-top:1.2rem;opacity:.6;font-size:.85rem">To jest wzór polityki prywatności do uzupełnienia i weryfikacji przez prawnika przed publikacją strony.</p>
+    <div id="privBody" data-i18n-html="privBody"></div>
   </div>
 </div>
 <script>
-const M={
+const M_PL={
 pizza:{t:"Pizza 32 cm",n:"",i:[
 ["Margherita","sos pomidorowy, mozzarella Fior di Latte, bazylia",32],
 ["Salami Napoli","sos pomidorowy, mozzarella Fior di Latte, salami Napoli, oliwki",39],
@@ -369,46 +363,230 @@ bar:{t:"Kawa i Italian Bar",n:"Italian Bar działa codziennie od 17:00.",i:[
 ["#Signature VIA 0%"],["Aperol 0%","",25],["Hugo 0%","",25],["Limoncello 0%","",25],
 ["#Kawa"],["Espresso","",8],["Americano","",10],["Cappuccino","",12],["Latte","",14],["Flat white","",14]]}
 };
-const acc=document.getElementById('acc');
-Object.keys(M).forEach((k,n)=>{
-  const c=M[k],cnt=c.i.filter(x=>x[0][0]!=='#').length;
-  const d=document.createElement('div');d.className='cat'+(n===0?' open':'');
-  let i=0;
-  d.innerHTML='<button class="head" aria-expanded="'+(n===0)+'" aria-controls="p-'+k+'"><span class="ct">'+c.t+'</span><span class="cn">'+cnt+'</span><span class="pl" aria-hidden="true"></span></button>'+
-   '<div class="panel" id="p-'+k+'"><div class="inner">'+(c.n?'<p class="nt">'+c.n+'</p>':'')+'<div class="list">'+
-   c.i.map(x=>x[0][0]==='#'?'<div class="sh">'+x[0].slice(1)+'</div>':'<div class="item" style="--i:'+(i++)+'"><div class="row"><span class="nm">'+x[0]+'</span><span class="ld"></span><span class="pr">'+x[2]+' zł</span></div>'+(x[1]?'<p class="ds">'+x[1]+'</p>':'')+'</div>').join('')+'</div></div></div>';
-  d.querySelector('.head').onclick=e=>{
-    const was=d.classList.contains('open');
-    acc.querySelectorAll('.cat').forEach(o=>{o.classList.remove('open');o.querySelector('.head').setAttribute('aria-expanded','false')});
-    if(!was){d.classList.add('open');e.currentTarget.setAttribute('aria-expanded','true')}
-  };
-  acc.appendChild(d);
-});
-// godziny: 0 = niedziela
-const H=[[12,20],[9,21],[9,21],[9,21],[9,21],[9,22],[12,22]];
-const D=['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
-const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Warsaw',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
-const g=t=>p.find(x=>x.type===t).value;
-const wd=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday')),now=+g('hour')+ +g('minute')/60;
-const [o,c]=H[wd],open=now>=o&&now<c,st=document.getElementById('status');
-st.classList.toggle('open',open);
-document.getElementById('stxt').textContent=open?'Otwarte teraz, do '+c+':00':(now<o?'Zamknięte, otwieramy dziś o '+o+':00':'Zamknięte, zapraszamy jutro od '+H[(wd+1)%7][0]+':00');
-document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(d=>'<tr'+(d===wd?' class="today"':'')+'><td>'+D[d]+'</td><td>'+H[d][0]+':00–'+H[d][1]+':00</td></tr>').join('');
+const M_EN={
+pizza:{t:"Pizza 32 cm",n:"",i:[
+["Margherita","tomato sauce, Fior di Latte mozzarella, basil",32],
+["Salami Napoli","tomato sauce, Fior di Latte mozzarella, Napoli salami, olives",39],
+["Capricciosa","tomato sauce, Fior di Latte mozzarella, cooked ham, mushrooms",38],
+["Diavola","tomato sauce, Fior di Latte mozzarella, spicy salami, chili, olives, Grana Padano",43],
+["Bianca","cream and parmesan sauce, pistachio mortadella, cranberry compote, basil",44],
+["Tartufata","truffle-tomato sauce, Fior di Latte mozzarella, basil",49],
+["Via","tomato sauce, Fior di Latte mozzarella, cherry tomatoes, burrata, spinach",52]]},
+romana:{t:"Pizza al taglio",n:"Pizza by the slice, 250–260 g portion.",i:[
+["Mortadella & pistacchio","basil pesto, mortadella, pistachio pesto, mozzarella, crushed pistachios",24],
+["Gamberetti limone","shrimp, burrata, arugula, cherry tomatoes",26],
+["Burrata pomodorini","cherry tomatoes, pesto, burrata, garlic",24],
+["Speck","speck, camembert, mozzarella, spinach",22],
+["Pancetta","Italian pancetta, fried egg, mozzarella, red onion",22]]},
+kanapki:{t:"Sandwiches",n:"Italian sandwiches, 20 cm.",i:[
+["Pastrami","beef pastrami, cheddar, pickles, mustard mayo",25],
+["Tonno","tuna, mozzarella, capers, red onion, lettuce, lemon oil",20],
+["Vegetariana","grilled vegetables, basil pesto, mozzarella",19],
+["Cotto","cooked ham, mozzarella, tomato, garlic pesto",19],
+["Formaggi","mozzarella, gorgonzola, taleggio, arugula, honey",22],
+["Piccante","spicy spinach, mozzarella, red onion, lettuce",22],
+["Parma e rukola","Parma ham, arugula, cherry tomatoes, Grana Padano, olive oil",24]]},
+makarony:{t:"Pasta & risotto",n:"",i:[
+["Tagliatelle ragù","classic beef ragù, Grana Padano",43],
+["Spaghetti carbonara","guanciale, Grana Padano, egg yolk, pepper",42],
+["Cacio e pepe","spaghetti in a pecorino-pepper sauce",41],
+["Spaghetti arrabbiata","tomato sauce, garlic, chili, basil",39],
+["Risotto zucchine","creamy zucchini sauce, sun-dried tomatoes, spinach",45],
+["Risotto tartufo","black truffle, Grana Padano",49],
+["Spaghetti frutti di mare","shrimp, squid, tomato sauce, Grana Padano",62]]},
+przystawki:{t:"Starters, soups, salads",n:"",i:[
+["#Starters"],
+["Bruschetta classica","tomatoes, basil, EVO olive oil",23],
+["Fries with cheddar sauce","300 g",20],
+["Bresaola carpaccio","arugula, Grana Padano, olive oil",36],
+["Beef tartare","truffle mayo, pickles, egg yolk",42],
+["Fritto misto","fried squid and shrimp with truffle mayo",46],
+["#Soups"],
+["Cream of San Marzano tomato soup","",23],
+["Creamy frutti di mare soup","",34],
+["#Salads"],
+["Grilled vegetables & burrata","",31],
+["Cherry tomato mix with burrata","basil pesto",33],
+["Shrimp salad","cherry tomatoes, avocado, parmesan, lemon dressing",44]]},
+desery:{t:"Desserts",n:"",i:[
+["Chocolate croissant","",12],["Panna cotta","",16],["Pistachio cannoli","",17],["Tiramisu","",18],["Dessert of the day","",22]]},
+bar:{t:"Coffee & Italian Bar",n:"Italian Bar runs daily from 5pm.",i:[
+["#Spritz"],["Aperol Spritz","",28],["Hugo Spritz","",28],["Limoncello Spritz","",28],
+["#Classics"],["Negroni","",29],["Negroni Sbagliato","",29],["Espresso Martini","",30],
+["#Signature VIA 0%"],["Aperol 0%","",25],["Hugo 0%","",25],["Limoncello 0%","",25],
+["#Coffee"],["Espresso","",8],["Americano","",10],["Cappuccino","",12],["Latte","",14],["Flat white","",14]]}
+};
+const HOURS_TABLE=[[12,20],[9,21],[9,21],[9,21],[9,21],[9,22],[12,22]]; // 0=niedziela
 
+const TX={
+  pl:{
+    navMenu:"Menu", navResv:"Rezerwacja", navCall:"Zadzwoń",
+    tagline:"Mangia, bene, vivi meglio!",
+    heroSub:"Włoska kuchnia na Wrzeszczu, od kawy do wieczornego spritza.",
+    heroDesc:"Pizza z pieca, romana na kawałki, świeży makaron i kanapki. Italian Bar czynny od 17:00.",
+    btnReserve:"Zarezerwuj stolik", btnMenu:"Zobacz menu",
+    menuH2:"Menu", menuLede:"Wybierz kategorię. Ceny w złotych, pizza 32 cm na cienkim, neapolitańskim cieście.",
+    resvH2:'Zarezerwuj <em>stolik</em>', resvLede:"Podgląd formularza — wysyłka rezerwacji zostanie podłączona w kolejnym kroku.",
+    lblDate:"Data", phDate:"Wybierz datę", lblTime:"Godzina", lblParty:"Liczba osób", phChoose:"Wybierz",
+    lblPhone:"Numer telefonu", phPhone:"np. 600 100 200",
+    lblName:"Imię i nazwisko", phName:"np. Anna Kowalska",
+    lblNotes:"Uwagi (opcjonalnie)", phNotes:"np. stolik przy oknie, alergia na orzechy…",
+    btnSubmit:"Zarezerwuj", formNote:"Formularz jest jeszcze podglądem — kliknięcie nie wysyła rezerwacji.",
+    kontaktH2:"Dojazd", kontaktLede:"Na miejscu, na wynos i z dostawą. Ocena w Google 4,8 (175 opinii).",
+    socH:"Śledź nas", mapLink:"Otwórz w Mapach Google i wyznacz trasę",
+    privLink:"Polityka prywatności", footerSite:'Strona: <a href="https://pageify.pl" target="_blank" rel="noopener" style="text-decoration:underline">Pageify.pl</a>',
+    months:['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'],
+    dow:['pn','wt','śr','cz','pt','sb','nd'], locale:'pl-PL',
+    dayNames:['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'],
+    statusOpen:c=>'Otwarte teraz, do '+c+':00',
+    statusBefore:o=>'Zamknięte, otwieramy dziś o '+o+':00',
+    statusAfter:o=>'Zamknięte, zapraszamy jutro od '+o+':00',
+    party:n=>n+' '+(n===1?'osoba':(n>=2&&n<=4?'osoby':'osób')),
+    privBody:`<h3>Polityka prywatności</h3>
+<p>Ostatnia aktualizacja: wrzesień 2026. Niniejszy dokument opisuje, jak VIA. Wrzeszcz przetwarza dane osób korzystających z tej strony i formularza rezerwacji.</p>
+<h4>Administrator danych</h4>
+<p>Administratorem danych jest VIA. Wrzeszcz, Romana Dmowskiego 2, 80-243 Gdańsk, tel. 881 787 686.</p>
+<h4>Jakie dane zbieramy i po co</h4>
+<ul>
+<li>Dane z formularza rezerwacji — imię i nazwisko, numer telefonu, data i godzina, liczba osób, opcjonalne uwagi — w celu przyjęcia i potwierdzenia rezerwacji stolika.</li>
+<li>Dane techniczne (np. adres IP, typ przeglądarki) mogą być zbierane automatycznie przez usługi, z których korzystamy, takie jak mapa Google poniżej, w celu poprawnego działania strony.</li>
+</ul>
+<h4>Podstawa prawna i okres przechowywania</h4>
+<p>Dane z formularza przetwarzamy na podstawie art. 6 ust. 1 lit. b RODO (podjęcie działań przed zawarciem umowy — obsługa rezerwacji) oraz lit. f (nasz prawnie uzasadniony interes, np. kontakt w sprawie rezerwacji). Dane przechowujemy nie dłużej, niż jest to potrzebne do obsługi rezerwacji i rozliczeń, a następnie usuwamy lub anonimizujemy.</p>
+<h4>Komu udostępniamy dane</h4>
+<p>Dane mogą być powierzane dostawcom usług, z których korzystamy do prowadzenia strony i obsługi rezerwacji (np. hosting, baza danych), wyłącznie w zakresie niezbędnym do świadczenia tych usług.</p>
+<h4>Pliki cookies i mapa Google</h4>
+<p>Strona osadza mapę Google, która może zapisywać własne pliki cookies zgodnie z polityką prywatności Google. Nie korzystamy z dodatkowych cookies śledzących.</p>
+<h4>Twoje prawa</h4>
+<p>Masz prawo do dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia oraz sprzeciwu, a także prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych. W tych sprawach napisz do nas na numer podany powyżej.</p>
+<p style="margin-top:1.2rem;opacity:.6;font-size:.85rem">To jest wzór polityki prywatności do uzupełnienia i weryfikacji przez prawnika przed publikacją strony.</p>`
+  },
+  en:{
+    navMenu:"Menu", navResv:"Reservation", navCall:"Call",
+    tagline:"Mangia, bene, vivi meglio!",
+    heroSub:"Italian kitchen in Wrzeszcz, from morning coffee to an evening spritz.",
+    heroDesc:"Wood-fired pizza, pizza al taglio, fresh pasta and sandwiches. Italian Bar open daily from 5pm.",
+    btnReserve:"Book a table", btnMenu:"View menu",
+    menuH2:"Menu", menuLede:"Pick a category. Prices in PLN, 32 cm pizza on thin Neapolitan dough.",
+    resvH2:'Book a <em>table</em>', resvLede:"Form preview — sending a reservation will be connected in the next step.",
+    lblDate:"Date", phDate:"Choose a date", lblTime:"Time", lblParty:"Party size", phChoose:"Choose",
+    lblPhone:"Phone number", phPhone:"e.g. 600 100 200",
+    lblName:"Full name", phName:"e.g. Anna Smith",
+    lblNotes:"Notes (optional)", phNotes:"e.g. table by the window, nut allergy…",
+    btnSubmit:"Book table", formNote:"This form is still a preview — clicking won't send a reservation.",
+    kontaktH2:"Find us", kontaktLede:"Dine in, takeaway and delivery. 4.8 on Google (175 reviews).",
+    socH:"Follow us", mapLink:"Open in Google Maps and get directions",
+    privLink:"Privacy policy", footerSite:'Website: <a href="https://pageify.pl" target="_blank" rel="noopener" style="text-decoration:underline">Pageify.pl</a>',
+    months:['January','February','March','April','May','June','July','August','September','October','November','December'],
+    dow:['Mo','Tu','We','Th','Fr','Sa','Su'], locale:'en-GB',
+    dayNames:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+    statusOpen:c=>'Open now, until '+c+':00',
+    statusBefore:o=>"Closed, we open today at "+o+':00',
+    statusAfter:o=>"Closed, join us tomorrow from "+o+':00',
+    party:n=>n+' '+(n===1?'person':'people'),
+    privBody:`<h3>Privacy policy</h3>
+<p>Last updated: September 2026. This document explains how VIA. Wrzeszcz processes the data of people using this website and the reservation form.</p>
+<h4>Data controller</h4>
+<p>The data controller is VIA. Wrzeszcz, Romana Dmowskiego 2, 80-243 Gdańsk, Poland, tel. +48 881 787 686.</p>
+<h4>What data we collect and why</h4>
+<ul>
+<li>Data from the reservation form — full name, phone number, date and time, party size, optional notes — used to accept and confirm a table reservation.</li>
+<li>Technical data (e.g. IP address, browser type) may be collected automatically by services we use, such as the Google Map below, to make the site work properly.</li>
+</ul>
+<h4>Legal basis and retention period</h4>
+<p>We process form data under GDPR Art. 6(1)(b) (steps taken before entering into a contract — handling your reservation) and Art. 6(1)(f) (our legitimate interest, e.g. contacting you about the reservation). We keep data no longer than needed to handle the reservation and any related accounting, then delete or anonymise it.</p>
+<h4>Who we share data with</h4>
+<p>Data may be entrusted to service providers we use to run the website and handle reservations (e.g. hosting, database), only to the extent needed to provide those services.</p>
+<h4>Cookies and Google Maps</h4>
+<p>The site embeds a Google Map, which may set its own cookies under Google's privacy policy. We don't use any additional tracking cookies.</p>
+<h4>Your rights</h4>
+<p>You have the right to access, correct, delete, restrict or object to the processing of your data, to data portability, and to lodge a complaint with the Polish data protection authority (UODO). Contact us using the phone number above for any of these requests.</p>
+<p style="margin-top:1.2rem;opacity:.6;font-size:.85rem">This is a template privacy policy to be completed and reviewed by a lawyer before the site goes live.</p>`
+  }
+};
+
+let LANG='pl';
+try{ const s=localStorage.getItem('via_lang'); if(s==='pl'||s==='en') LANG=s; }catch(e){}
+
+const acc=document.getElementById('acc');
+function renderMenu(){
+  const M = LANG==='en' ? M_EN : M_PL;
+  acc.innerHTML='';
+  Object.keys(M).forEach((k,n)=>{
+    const c=M[k],cnt=c.i.filter(x=>x[0][0]!=='#').length;
+    const d=document.createElement('div');d.className='cat'+(n===0?' open':'');
+    let i=0;
+    d.innerHTML='<button class="head" aria-expanded="'+(n===0)+'" aria-controls="p-'+k+'"><span class="ct">'+c.t+'</span><span class="cn">'+cnt+'</span><span class="pl" aria-hidden="true"></span></button>'+
+     '<div class="panel" id="p-'+k+'"><div class="inner">'+(c.n?'<p class="nt">'+c.n+'</p>':'')+'<div class="list">'+
+     c.i.map(x=>x[0][0]==='#'?'<div class="sh">'+x[0].slice(1)+'</div>':'<div class="item" style="--i:'+(i++)+'"><div class="row"><span class="nm">'+x[0]+'</span><span class="ld"></span><span class="pr">'+x[2]+' zł</span></div>'+(x[1]?'<p class="ds">'+x[1]+'</p>':'')+'</div>').join('')+'</div></div></div>';
+    d.querySelector('.head').onclick=e=>{
+      const was=d.classList.contains('open');
+      acc.querySelectorAll('.cat').forEach(o=>{o.classList.remove('open');o.querySelector('.head').setAttribute('aria-expanded','false')});
+      if(!was){d.classList.add('open');e.currentTarget.setAttribute('aria-expanded','true')}
+    };
+    acc.appendChild(d);
+  });
+}
+
+function renderHours(){
+  const t=TX[LANG];
+  const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Warsaw',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+  const g=x=>p.find(y=>y.type===x).value;
+  const wd=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday')),now=+g('hour')+ +g('minute')/60;
+  const [o,c]=HOURS_TABLE[wd],open=now>=o&&now<c,st=document.getElementById('status');
+  st.classList.toggle('open',open);
+  document.getElementById('stxt').textContent=open?t.statusOpen(c):(now<o?t.statusBefore(o):t.statusAfter(HOURS_TABLE[(wd+1)%7][0]));
+  document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(d=>'<tr'+(d===wd?' class="today"':'')+'><td>'+t.dayNames[d]+'</td><td>'+HOURS_TABLE[d][0]+':00–'+HOURS_TABLE[d][1]+':00</td></tr>').join('');
+}
+
+function renderParty(){
+  const list=document.getElementById('pOpts'), t=TX[LANG];
+  const prevSel=list.querySelector('li[aria-selected="true"]'); const n0=prevSel?+prevSel.dataset.n:null;
+  list.innerHTML='';
+  for(let n=1;n<=10;n++){
+    const li=document.createElement('li'); li.setAttribute('role','option'); li.dataset.n=n; li.textContent=t.party(n);
+    if(n===n0){ li.setAttribute('aria-selected','true'); document.getElementById('ptxt').textContent=li.textContent; document.getElementById('ptxt').classList.remove('ph'); }
+    list.appendChild(li);
+  }
+}
+
+function applyLang(){
+  const t=TX[LANG];
+  document.documentElement.lang=LANG;
+  document.getElementById('lPL').classList.toggle('on',LANG==='pl');
+  document.getElementById('lEN').classList.toggle('on',LANG==='en');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent=t[el.dataset.i18n]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.innerHTML=t[el.dataset.i18nHtml]; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ el.placeholder=t[el.dataset.i18nPh]; });
+  document.getElementById('calDow').innerHTML=t.dow.map(d=>'<span>'+d+'</span>').join('');
+  // reset placeholderów list rozwijanych po zmianie danych
+  ['ttxt'].forEach(id=>{ const el=document.getElementById(id); if(el.classList.contains('ph')) el.textContent=t.phChoose; });
+  const dtxt=document.getElementById('dtxt'); if(dtxt.classList.contains('ph')) dtxt.textContent=t.phDate;
+  renderMenu();
+  renderHours();
+  renderParty();
+  if(typeof drawCalendar==='function') drawCalendar();
+}
+
+document.getElementById('langBtn').onclick=()=>{
+  LANG = LANG==='pl' ? 'en' : 'pl';
+  try{ localStorage.setItem('via_lang',LANG); }catch(e){}
+  applyLang();
+};
 
 // kalendarz wyboru daty (podgląd formularza)
+let drawCalendar;
 (function(){
   const btn=document.getElementById('dbtn'), pop=document.getElementById('cal'), grid=document.getElementById('cGrid'),
         mLbl=document.getElementById('mLbl'), txt=document.getElementById('dtxt'),
         prevM=document.getElementById('prevM'), nextM=document.getElementById('nextM');
   if(!btn) return;
-  const MIES=['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
-  const DNI=['nd','pn','wt','śr','cz','pt','sb'];
   const now=new Date(); now.setHours(0,0,0,0);
   let view=new Date(now.getFullYear(), now.getMonth(), 1), picked=null;
 
-  function draw(){
-    mLbl.textContent=MIES[view.getMonth()]+' '+view.getFullYear();
+  drawCalendar=function(){
+    const t=TX[LANG];
+    mLbl.textContent=t.months[view.getMonth()]+' '+view.getFullYear();
     prevM.disabled = view.getFullYear()===now.getFullYear() && view.getMonth()===now.getMonth();
     const first=new Date(view.getFullYear(),view.getMonth(),1), startCol=(first.getDay()+6)%7;
     const days=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();
@@ -420,14 +598,14 @@ document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(d=>'<tr'+(d===wd?
       html+='<button type="button"'+(past?' disabled':'')+' class="'+(isToday?'today ':'')+(isSel?'sel':'')+'" data-d="'+d+'">'+d+'</button>';
     }
     grid.innerHTML=html;
-  }
-  function fmt(d){ return d.toLocaleDateString('pl-PL',{weekday:'long',day:'numeric',month:'long'}); }
-  function open_(){ pop.hidden=false; btn.setAttribute('aria-expanded','true'); draw(); }
+  };
+  function fmt(d){ return d.toLocaleDateString(TX[LANG].locale,{weekday:'long',day:'numeric',month:'long'}); }
+  function open_(){ pop.hidden=false; btn.setAttribute('aria-expanded','true'); drawCalendar(); }
   function close_(){ pop.hidden=true; btn.setAttribute('aria-expanded','false'); }
 
   btn.onclick=e=>{ e.stopPropagation(); pop.hidden ? open_() : close_(); };
-  prevM.onclick=()=>{ view.setMonth(view.getMonth()-1); draw(); };
-  nextM.onclick=()=>{ view.setMonth(view.getMonth()+1); draw(); };
+  prevM.onclick=()=>{ view.setMonth(view.getMonth()-1); drawCalendar(); };
+  nextM.onclick=()=>{ view.setMonth(view.getMonth()+1); drawCalendar(); };
   grid.onclick=e=>{
     const b=e.target.closest('button[data-d]'); if(!b || b.disabled) return;
     picked=new Date(view.getFullYear(),view.getMonth(),+b.dataset.d);
@@ -472,6 +650,7 @@ document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(d=>'<tr'+(d===wd?
   document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !ovl.hidden) close_(); });
 })();
 
+applyLang();
 </script>
 </body>
 </html>
