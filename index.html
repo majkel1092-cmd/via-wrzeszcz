@@ -31,11 +31,11 @@ nav .call{background:var(--gold);color:var(--green);opacity:1;font-weight:700;pa
 @media(max-width:600px){nav .hide{display:none}}
 
 .hero{position:relative;background:var(--green);color:#f7f3ea;min-height:calc(100svh - 4rem);display:flex;flex-direction:column;overflow:hidden}
-.hero .wrap{flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:3rem;padding-bottom:3rem;width:100%}
-.it{font:italic 1.6rem/1.2 var(--serif);color:var(--gold);margin:0 0 .4rem}
-h1{margin:0;overflow:hidden;padding:0 .05em .1em 0;font:italic 400 clamp(8rem,34vw,26rem)/.8 var(--serif);color:var(--gold);letter-spacing:-.04em}
+.hero .wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:3rem;padding-bottom:3rem;width:100%}
+.it{font:italic 1.6rem/1.2 var(--serif);color:var(--gold);margin:0 0 .4rem;text-align:center}
+h1{margin:0;overflow:hidden;padding:0 .05em .1em 0;font:italic 400 clamp(8rem,34vw,26rem)/.8 var(--serif);color:var(--gold);letter-spacing:-.04em;text-align:center}
 h1 span{display:block}
-.hrow{position:relative;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-top:2rem;padding-top:1.7rem}
+.hrow{align-self:stretch;position:relative;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-top:2rem;padding-top:1.7rem}
 .hrow::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--gold);transform-origin:left}
 .sub{font:400 clamp(1.6rem,3.2vw,2.3rem)/1.2 var(--serif);margin:0 0 .6rem;max-width:24ch}
 .hrow p.d{margin:0;max-width:40ch;opacity:.8}
@@ -191,7 +191,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
 </head>
 <body>
 <header><div class="wrap"><a class="logo" href="#top">Via.</a>
-<nav><a class="hide" href="#menu">Menu</a><a class="hide" href="#lokal">Lokal</a><a href="#rezerwacja">Rezerwacja</a><a class="call" href="tel:+48881787686">Zadzwoń</a></nav></div></header>
+<nav><a class="hide" href="#menu">Menu</a><a href="#rezerwacja">Rezerwacja</a><a class="call" href="tel:+48881787686">Zadzwoń</a></nav></div></header>
 <main id="top">
 <div class="hero"><div class="wrap">
   <p class="it">Mangia, bene, vivi meglio!</p>
@@ -208,15 +208,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   <h2>Menu</h2>
   <p class="lede">Wybierz kategorię. Ceny w złotych, pizza 32 cm na cienkim, neapolitańskim cieście.</p>
   <div id="acc"></div>
-</div></section>
-
-<section class="place" id="lokal"><div class="wrap">
-  <h2>Przy <em>Dmowskiego 2</em></h2>
-  <p class="lede">Drewno, zielona tapicerka, piec z cegły i obrusy w kratkę.</p>
-  <div class="pg">
-    <figure><img src="img/bar.jpg" alt="Bar, regał z greenm i piec Forno w ceglanym łuku" loading="lazy"><figcaption>Bar i piec</figcaption></figure>
-    <figure><img src="img/pizza.jpg" alt="Pizza z salami i oliwkami na stole z obrusem w kratkę" loading="lazy"><figcaption>Pizza z salami i oliwkami</figcaption></figure>
-  </div>
 </div></section>
 
 <section class="resv" id="rezerwacja"><div class="wrap">
@@ -297,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   <div class="wrap"><span>VIA. Wrzeszcz, Romana Dmowskiego 2, Gdańsk</span><span>@via.wrzeszcz</span></div>
   <div class="wrap" style="margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(247,243,234,.15);font-size:.8rem;opacity:.6;justify-content:space-between">
     <a href="#" id="privLink" style="text-decoration:underline">Polityka prywatności</a>
-    <span>Strona: <a href="https://pageify.pl" rel="noopener" style="text-decoration:underline">pageify.pl</a></span>
+    <span>Strona: <a href="https://pageify.pl" target="_blank" rel="noopener" style="text-decoration:underline">Pageify.pl</a></span>
   </div>
 </footer>
 
