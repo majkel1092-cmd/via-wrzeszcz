@@ -3,8 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>VIA. Wrzeszcz – włoska kuchnia, pizza i Italian Bar w Gdańsku</title>
-<meta name="description" content="VIA. Wrzeszcz, Romana Dmowskiego 2 w Gdańsku. Pizza 32 cm, pizza romana, makarony, kanapki i Italian Bar od 17:00.">
+<title id="pageTitle">VIA. Wrzeszcz – włoska kuchnia, pizza i Italian Bar w Gdańsku</title>
+<meta id="metaDesc" name="description" content="VIA. Wrzeszcz, Romana Dmowskiego 2 w Gdańsku. Pizza 32 cm, pizza romana, makarony, kanapki i Italian Bar od 17:00. Ocena 4,8 na Google.">
+<link rel="canonical" href="https://viawrzeszcz.pl/">
+<meta property="og:type" content="restaurant">
+<meta property="og:site_name" content="VIA. Wrzeszcz">
+<meta id="ogTitle" property="og:title" content="VIA. Wrzeszcz – włoska kuchnia, pizza i Italian Bar w Gdańsku">
+<meta id="ogDesc" property="og:description" content="Pizza 32 cm, pizza romana, makarony, kanapki i Italian Bar od 17:00. Romana Dmowskiego 2, Gdańsk. Ocena 4,8 na Google.">
+<meta id="ogLocale" property="og:locale" content="pl_PL">
+<meta property="og:url" content="https://viawrzeszcz.pl/">
+<meta name="twitter:card" content="summary">
+<meta id="twTitle" name="twitter:title" content="VIA. Wrzeszcz">
+<meta id="twDesc" name="twitter:description" content="Włoska kuchnia na Wrzeszczu — pizza, pasta, kanapki i Italian Bar.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"VIA. Wrzeszcz","servesCuisine":["Italian","Pizza","Neapolitan"],
+"address":{"@type":"PostalAddress","streetAddress":"Romana Dmowskiego 2","addressLocality":"Gdańsk","postalCode":"80-243","addressCountry":"PL"},
+"telephone":"+48881787686","priceRange":"40–60 zł",
+"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"175"},
+"openingHoursSpecification":[
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"09:00","closes":"21:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"09:00","closes":"22:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"12:00","closes":"22:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"20:00"}],
+"sameAs":["https://www.instagram.com/viawrzeszcz/","https://www.facebook.com/p/VIA-Wrzeszcz-61588919458255/","https://www.tiktok.com/@via.wrzeszcz"]}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%95%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -24,7 +46,7 @@ a{color:inherit}:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:rgba(14,43,31,.94);backdrop-filter:blur(10px);color:#f7f3ea}
 header .wrap{display:flex;justify-content:space-between;align-items:center;height:4rem}
-.logo{font:italic 2rem/1 var(--serif);text-decoration:none;color:var(--gold)}
+.logo{font:italic clamp(1.15rem,4vw,2rem)/1 var(--serif);text-decoration:none;color:var(--gold);white-space:nowrap}
 nav{display:flex;gap:1.6rem;align-items:center;font-size:.95rem}
 nav a{text-decoration:none;opacity:.85}nav a:hover{opacity:1}
 nav .call{background:var(--gold);color:var(--green);opacity:1;font-weight:700;padding:.5rem 1.1rem;border-radius:99px}
@@ -156,6 +178,19 @@ h2 em{font-style:italic}
 .dbtn .chev{transition:transform .2s}
 .dbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
 
+/* opinie */
+.rev{background:var(--green);color:#f7f3ea}
+.rev h2{color:#f7f3ea}
+.rev .lede{color:#f7f3ea;opacity:.75}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.4rem}
+.rcard{background:linear-gradient(165deg,#123322,#0c2318);border:1px solid rgba(201,162,75,.3);color:#f7f3ea;border-radius:16px;padding:1.4rem;box-shadow:0 20px 40px -18px rgba(0,0,0,.45)}
+.rstars{color:var(--gold);letter-spacing:.15em;font-size:1rem;margin:0 0 .7rem}
+.rcard p{margin:0 0 1rem;font-size:.98rem;line-height:1.55}
+.rauthor{font:700 .95rem var(--sans);color:#f7f3ea}
+.rsrc{margin-top:1.6rem;display:flex;align-items:center;gap:.5rem;font-size:.92rem}
+.rsrc a{color:#f7f3ea;opacity:.85}
+.rsrc a:hover{opacity:1}
+
 /* modal: polityka prywatności */
 .ovl{position:fixed;inset:0;z-index:40;background:rgba(8,18,12,.72);display:flex;align-items:center;justify-content:center;padding:1.2rem}
 .ovl[hidden]{display:none}
@@ -194,7 +229,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="logo" href="#top">Via.</a>
+<header><div class="wrap"><a class="logo" href="#top">Via Wrzeszcz</a>
 <nav><a class="hide" href="#menu" data-i18n="navMenu">Menu</a><a href="#rezerwacja" data-i18n="navResv">Rezerwacja</a><a class="call" href="tel:+48881787686" data-i18n="navCall">Zadzwoń</a>
 <button type="button" class="langsw" id="langBtn" aria-label="Zmień język / Change language"><span id="lPL" class="on">PL</span><span id="lEN">EN</span></button>
 </nav></div></header>
@@ -275,6 +310,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   </form>
 </div></section>
 
+<section class="rev" id="opinie"><div class="wrap">
+  <h2 data-i18n="revH2">Co mówią goście</h2>
+  <p class="lede" data-i18n="revLede">Prawdziwe opinie z Google — ocena 4,8 na 175 recenzji.</p>
+  <div class="rgrid">
+    <div class="rcard"><p class="rstars">★★★★★</p>
+      <p>„Świetne miejsce! Jedzenie było przepyszne, przygotowane z wysokiej jakości składników i pięknie podane. Atmosfera bardzo przyjemna, a obsługa miła, uśmiechnięta i profesjonalna. Zdecydowanie będę wracać i z czystym sumieniem polecam każdemu!”</p>
+      <p class="rauthor">Piotr A</p></div>
+    <div class="rcard"><p class="rstars">★★★★★</p>
+      <p>„Pyszne jedzenie, bardzo miła obsługa i sympatyczny właściciel🙂. Pizza ma bardzo dobre cienkie ciasto i czuć, że składniki też są bardzo dobrej jakości. Bardzo ładny wystrój. Na pewno tu jeszcze wrócimy🙂”</p>
+      <p class="rauthor">Astrid Freiberg</p></div>
+    <div class="rcard"><p class="rstars">★★★★★</p>
+      <p>„Bardzo miła obsługa, jedzenie pyszne i duży plus za możliwość wejścia z pieskiem. Bardzo też podoba mi się pomysł z pizzą na kawałki, więc jest to idealne miejsce na szybki lunch.”</p>
+      <p class="rauthor">Zuzia</p></div>
+    <div class="rcard"><p class="rstars">★★★★★</p>
+      <p>„Przemili ludzie za barem, miejsce z potencjałem, piękny przestronny lokal. Pyszna kanapka i kawka :)”</p>
+      <p class="rauthor">Krzysztof</p></div>
+  </div>
+  <p class="rsrc"><a href="https://www.google.com/maps/search/?api=1&query=VIA.+Wrzeszcz+Romana+Dmowskiego+2+Gda%C5%84sk" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.5rem;color:inherit;text-decoration:underline"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M21.6 12.23c0-.7-.06-1.37-.17-2.02H12v3.83h5.4a4.62 4.62 0 0 1-2 3.03v2.5h3.24c1.9-1.75 3-4.33 3-7.34Z"/><path fill="currentColor" d="M12 22c2.7 0 4.97-.89 6.62-2.42l-3.24-2.5c-.9.6-2.05.96-3.38.96-2.6 0-4.8-1.75-5.59-4.11H3.06v2.58A10 10 0 0 0 12 22Z"/><path fill="currentColor" d="M6.41 13.93a5.99 5.99 0 0 1 0-3.85V7.5H3.06a10 10 0 0 0 0 9l3.35-2.57Z"/><path fill="currentColor" d="M12 6.02c1.47 0 2.79.51 3.83 1.5l2.87-2.87A9.93 9.93 0 0 0 12 2a10 10 0 0 0-8.94 5.5l3.35 2.58c.79-2.36 2.99-4.06 5.59-4.06Z"/></svg><span data-i18n="revGoogle">Zobacz wszystkie opinie w Google</span></a></p>
+</div></section>
+
 <section id="kontakt"><div class="wrap cg">
   <div>
     <h2 data-i18n="kontaktH2">Dojazd</h2>
@@ -299,7 +354,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   <div class="wrap"><span>VIA. Wrzeszcz, Romana Dmowskiego 2, Gdańsk</span><span>@via.wrzeszcz</span></div>
   <div class="wrap" style="margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(247,243,234,.15);font-size:.8rem;opacity:.6;justify-content:space-between">
     <a href="#" id="privLink" style="text-decoration:underline" data-i18n="privLink">Polityka prywatności</a>
-    <span data-i18n="footerSite">Strona: <a href="https://pageify.pl" target="_blank" rel="noopener" style="text-decoration:underline">Pageify.pl</a></span>
+    <span data-i18n-html="footerSite">Strona: <a href="https://pageify.pl" target="_blank" rel="noopener" style="text-decoration:underline">Pageify.pl</a></span>
   </div>
 </footer>
 
@@ -433,6 +488,7 @@ const TX={
     lblNotes:"Uwagi (opcjonalnie)", phNotes:"np. stolik przy oknie, alergia na orzechy…",
     btnSubmit:"Zarezerwuj", formNote:"Formularz jest jeszcze podglądem — kliknięcie nie wysyła rezerwacji.",
     kontaktH2:"Dojazd", kontaktLede:"Na miejscu, na wynos i z dostawą. Ocena w Google 4,8 (175 opinii).",
+    revH2:"Co mówią goście", revLede:"Prawdziwe opinie z Google — ocena 4,8 na 175 recenzji.", revGoogle:"Zobacz wszystkie opinie w Google",
     socH:"Śledź nas", mapLink:"Otwórz w Mapach Google i wyznacz trasę",
     privLink:"Polityka prywatności", footerSite:'Strona: <a href="https://pageify.pl" target="_blank" rel="noopener" style="text-decoration:underline">Pageify.pl</a>',
     months:['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'],
@@ -475,6 +531,7 @@ const TX={
     lblNotes:"Notes (optional)", phNotes:"e.g. table by the window, nut allergy…",
     btnSubmit:"Book table", formNote:"This form is still a preview — clicking won't send a reservation.",
     kontaktH2:"Find us", kontaktLede:"Dine in, takeaway and delivery. 4.8 on Google (175 reviews).",
+    revH2:"What our guests say", revLede:"Real Google reviews — rated 4.8 from 175 reviews.", revGoogle:"See all reviews on Google",
     socH:"Follow us", mapLink:"Open in Google Maps and get directions",
     privLink:"Privacy policy", footerSite:'Website: <a href="https://pageify.pl" target="_blank" rel="noopener" style="text-decoration:underline">Pageify.pl</a>',
     months:['January','February','March','April','May','June','July','August','September','October','November','December'],
@@ -550,14 +607,31 @@ function renderParty(){
   }
 }
 
+const SEO={
+  pl:{title:"VIA. Wrzeszcz – włoska kuchnia, pizza i Italian Bar w Gdańsku",
+      desc:"VIA. Wrzeszcz, Romana Dmowskiego 2 w Gdańsku. Pizza 32 cm, pizza romana, makarony, kanapki i Italian Bar od 17:00. Ocena 4,8 na Google.",
+      ogDesc:"Pizza 32 cm, pizza romana, makarony, kanapki i Italian Bar od 17:00. Romana Dmowskiego 2, Gdańsk. Ocena 4,8 na Google.",
+      twDesc:"Włoska kuchnia na Wrzeszczu — pizza, pasta, kanapki i Italian Bar.", locale:"pl_PL"},
+  en:{title:"VIA. Wrzeszcz – Italian kitchen, pizza & Italian Bar in Gdańsk",
+      desc:"VIA. Wrzeszcz, Romana Dmowskiego 2, Gdańsk. 32 cm pizza, pizza al taglio, pasta, sandwiches and Italian Bar from 5pm. Rated 4.8 on Google.",
+      ogDesc:"32 cm pizza, pizza al taglio, pasta, sandwiches and Italian Bar from 5pm. Romana Dmowskiego 2, Gdańsk. Rated 4.8 on Google.",
+      twDesc:"Italian kitchen in Wrzeszcz — pizza, pasta, sandwiches and Italian Bar.", locale:"en_US"}
+};
 function applyLang(){
-  const t=TX[LANG];
+  const t=TX[LANG], s=SEO[LANG];
   document.documentElement.lang=LANG;
   document.getElementById('lPL').classList.toggle('on',LANG==='pl');
   document.getElementById('lEN').classList.toggle('on',LANG==='en');
   document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent=t[el.dataset.i18n]; });
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.innerHTML=t[el.dataset.i18nHtml]; });
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ el.placeholder=t[el.dataset.i18nPh]; });
+  document.getElementById('pageTitle').textContent=s.title;
+  document.getElementById('metaDesc').setAttribute('content', s.desc);
+  document.getElementById('ogTitle').setAttribute('content', s.title);
+  document.getElementById('ogDesc').setAttribute('content', s.ogDesc);
+  document.getElementById('ogLocale').setAttribute('content', s.locale);
+  document.getElementById('twTitle').setAttribute('content', 'VIA. Wrzeszcz');
+  document.getElementById('twDesc').setAttribute('content', s.twDesc);
   document.getElementById('calDow').innerHTML=t.dow.map(d=>'<span>'+d+'</span>').join('');
   // reset placeholderów list rozwijanych po zmianie danych
   ['ttxt'].forEach(id=>{ const el=document.getElementById(id); if(el.classList.contains('ph')) el.textContent=t.phChoose; });
